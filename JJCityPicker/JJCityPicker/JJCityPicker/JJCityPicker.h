@@ -6,7 +6,12 @@
 //  Copyright © 2018年 luming. All rights reserved.
 //
 
+
+/**
+ 针对通过plist的方式实现省市区三级联动
+ */
 #import <UIKit/UIKit.h>
+
 
 @class JJToolBar;
 @protocol JJCityPickerDelegate <NSObject>
