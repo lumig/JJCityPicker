@@ -65,7 +65,6 @@
 - (void)initSubview{
     [self getAddressData];
 
-    
     [self addSubview:self.toolBar];
 
     [self addSubview:self.pickerView];
@@ -118,10 +117,18 @@
 
 
 #pragma mark - UIPickerView Delegate
+
+
+/**
+设置有几个分区
+ */
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 3;
 }
 
+/**
+ 设置每个分区有多少行，需要明确告诉在第几列中有多少行
+ */
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     if (component == 0) {
         return self.provinceArray.count;
@@ -132,6 +139,9 @@
     }
 }
 
+/**
+设置每行的内容
+  */
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     if (component == 0) {
         return [self.provinceArray objectAtIndex:row];
@@ -142,16 +152,9 @@
     }
 }
 
-- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
-    if (component == 0) {
-        return 110;
-    } else if (component == 1) {
-        return 110;
-    } else {
-        return 110;
-    }
-}
-
+/**
+ 选中某一行触发方法（做三级联动）
+ */
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if (component == 0) {
         self.selectedArray = [self.pickerDict objectForKey:[self.provinceArray objectAtIndex:row]];
